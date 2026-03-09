@@ -54,5 +54,19 @@ public class TopicoController {
         return ResponseEntity.ok(repository.findAll(paginacion).map(DatosRespuestaTopico::new));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosRespuestaTopico> detallar(@PathVariable Long id) {
+
+        /*
+        //Verificar si existee
+        if (!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        */
+
+        Topico topico = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DatosRespuestaTopico(topico));
+    }
+
 
 }

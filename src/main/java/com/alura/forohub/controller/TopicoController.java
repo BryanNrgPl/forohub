@@ -83,5 +83,20 @@ public class TopicoController {
         return ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity eliminar(@PathVariable Long id) {
+
+        var topicoOptional = repository.findById(id);
+
+        if (topicoOptional.isPresent()) {
+            repository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+
+        // devolver 404
+        return ResponseEntity.notFound().build();
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.alura.forohub.model;
 
+import com.alura.forohub.dto.DatosActualizarTopico;
 import com.alura.forohub.dto.DatosRegistroTopico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,5 +35,14 @@ public class Topico {
         this.status = "ABIERTO";
         this.autor = datos.autor();
         this.curso = datos.curso();
+    }
+
+    public void actualizarDatos(DatosActualizarTopico datos) {
+        if (datos.titulo() != null) {
+            this.titulo = datos.titulo();
+        }
+        if (datos.mensaje() != null) {
+            this.mensaje = datos.mensaje();
+        }
     }
 }

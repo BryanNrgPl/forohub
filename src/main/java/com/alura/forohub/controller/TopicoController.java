@@ -1,6 +1,6 @@
 package com.alura.forohub.controller;
 
-
+import com.alura.forohub.dto.DatosActualizarTopico;
 import com.alura.forohub.dto.DatosRegistroTopico;
 import com.alura.forohub.dto.DatosRespuestaTopico;
 import com.alura.forohub.model.Topico;
@@ -66,6 +66,21 @@ public class TopicoController {
 
         Topico topico = repository.getReferenceById(id);
         return ResponseEntity.ok(new DatosRespuestaTopico(topico));
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DatosRespuestaTopico> actualizar(@PathVariable Long id, @RequestBody @Valid DatosActualizarTopico datos) {
+
+        var topicoOptional = repository.findById(id);
+
+        if (topicoOptional.isPresent()) {
+            var topico = topicoOptional.get();
+            topico.actualizarDatos(datos);
+            return ResponseEntity.ok(new DatosRespuestaTopico(topico));
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
 

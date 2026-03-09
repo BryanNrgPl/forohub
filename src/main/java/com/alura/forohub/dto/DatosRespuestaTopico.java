@@ -1,5 +1,6 @@
 package com.alura.forohub.dto;
 
+import com.alura.forohub.model.Topico;
 import java.time.LocalDateTime;
 
 public record DatosRespuestaTopico(
@@ -8,4 +9,7 @@ public record DatosRespuestaTopico(
         String mensaje,
         LocalDateTime fechaCreacion
 ) {
+    public DatosRespuestaTopico(Topico topico) {
+        this(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFechaCreacion());
+    }
 }

@@ -1,5 +1,6 @@
 package com.alura.forohub.model;
 
+import com.alura.forohub.dto.DatosRegistroTopico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,4 +26,13 @@ public class Topico {
     private String status;
     private String autor;
     private String curso;
+
+    public Topico(DatosRegistroTopico datos){
+        this.titulo = datos.titulo();
+        this.mensaje = datos.mensaje();
+        this.fechaCreacion = LocalDateTime.now();
+        this.status = "ABIERTO";
+        this.autor = datos.autor();
+        this.curso = datos.curso();
+    }
 }

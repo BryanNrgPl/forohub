@@ -1,10 +1,9 @@
-create table topicos(
-    id bigint not null auto_increment,
-    titulo varchar(100) not null,
-    mensaje varchar(255) not null,
-    fecha_creacion timestamp not null,
-    status varchar(100) not null,
-    autor varchar(100) not null,
-    curso varchar(100) not null;
-    primary key(id)
+CREATE TABLE topicos (
+    id BIGSERIAL PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    mensaje VARCHAR(255) NOT NULL,
+    fecha_creacion TIMESTAMP NOT NULL,
+    status VARCHAR(100) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    curso VARCHAR(100) NOT NULL
 );
